@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #2A3D2B;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        .bg-design {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(232, 222, 222, 0.6);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+
+        /* Header */
+        .header {
+            position: relative;
+            padding: 2rem 0;
+            text-align: center;
+            background: #2A3D2B;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            background: #e8dede;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3)); }
+            to { filter: drop-shadow(0 0 40px rgb(255, 255, 255)); }
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .nav-button {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, rgba(232, 222, 222, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(232, 222, 222, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-button:hover::before {
+            left: 100%;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(232, 222, 222, 0.4);
+            border-color: rgba(232, 222, 222, 0.6);
+        }
+
+        /* Main content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Profile Image Section */
+        .profile-section {
+            text-align: center;
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+            animation-delay: 0.1s;
+        }
+
+        .profile-image-container {
+            display: inline-block;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(232, 222, 222, 0.3);
+            transition: all 0.4s ease;
+            animation: profileGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes profileGlow {
+            from { 
+                box-shadow: 0 0 20px rgba(232, 222, 222, 0.3);
+                transform: scale(1);
+            }
+            to { 
+                box-shadow: 0 0 40px rgba(232, 222, 222, 0.6);
+                transform: scale(1.02);
+            }
+        }
+
+        .profile-image:hover {
+            transform: scale(1.1);
+            border-color: rgba(232, 222, 222, 0.8);
+            box-shadow: 0 0 50px rgba(232, 222, 222, 0.7);
+        }
+
+        /* About sections */
+        .about-section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .about-section:nth-child(1) { animation-delay: 0.2s; }
+        .about-section:nth-child(2) { animation-delay: 0.4s; }
+        .about-section:nth-child(3) { animation-delay: 0.6s; }
+        .about-section:nth-child(4) { animation-delay: 0.8s; }
+        .about-section:nth-child(5) { animation-delay: 1.0s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .about-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(232, 222, 222, 0.1), transparent);
+            animation: rotate 4s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .about-card:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border-color: rgba(232, 222, 222, 0.4);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #e8dede 0%, #ffffff 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Interests grid */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .interest-card {
+            background: linear-gradient(135deg, rgba(232, 222, 222, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interest-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(232, 222, 222, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .interest-card:hover::before {
+            left: 100%;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 0 20px 40px rgba(232, 222, 222, 0.3);
+        }
+
+        .interest-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .interest-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #e8dede;
+        }
+
+        .interest-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+
+        /* Hero section */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero-intro {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            color: #e8dede;
+            font-weight: 600;
+        }
+
+        /* Stats cards */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(232, 222, 222, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(232, 222, 222, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(232, 222, 222, 0.5);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #e8dede;
+            display: block;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .nav-button {
+                width: 200px;
+            }
+
+            .about-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .interests-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-design" id="design"></div>
+    
+    <header class="header">
+        <h1 class="title">About Me</h1>
+        <nav class="nav">
+            <a href="/" class="nav-button">Home</a>
+            <a href="/projects" class="nav-button">Projects</a>
+            <a href="/about-me" class="nav-button">About Me</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="profile-section">
+            <div class="profile-image-container">
+                <img src="static/images/IMG_3913.jpeg" alt="Profile Picture" class="profile-image">
+            </div>
+        </section>
+
+        <section class="about-section hero-section">
+            <div class="about-card">
+                <p class="hero-intro">
+                    I'm a <span class="highlight">computer science major at Temple University</span>, passionate about leveraging technology to create meaningful impact. My journey in coding began freshman year, and I quickly discovered my love for <span class="highlight">AI, cloud computing, and web development</span>. As I head into my sophomore year, I'm focused on growth, ready to embrace challenges, and committed to using technology to help those who are less fortunate.
+                </p>
+                
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <span class="stat-number">2nd</span>
+                        <span class="stat-label">Year Student</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">CS</span>
+                        <span class="stat-label">Major Focus</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">1+</span>
+                        <span class="stat-label">Years Coding</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="about-card">
+                <h2 class="section-title">🎯 Academic Focus & Goals</h2>
+                <div class="section-content">
+                    <p>My academic interests center around three key areas: <strong>Artificial Intelligence</strong>, <strong>Cloud Computing</strong>, and <strong>Web Development</strong>. I'm particularly drawn to how these technologies can be combined to create scalable solutions that address real-world problems.</p>
+                    <br>
+                    <p>Looking ahead, my goal is to develop expertise in cloud-based AI systems that can be deployed to help underserved communities. I believe technology should be a force for good, and I'm committed to building solutions that bridge the digital divide and create opportunities for those who need them most.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="about-card">
+                <h2 class="section-title">🚀 Technical Interests</h2>
+                <div class="interests-grid">
+                    <div class="interest-card">
+                        <span class="interest-icon">🤖</span>
+                        <h3 class="interest-title">Artificial Intelligence</h3>
+                        <p class="interest-description">Exploring machine learning, neural networks, and AI applications for social good</p>
+                    </div>
+                    <div class="interest-card">
+                        <span class="interest-icon">☁️</span>
+                        <h3 class="interest-title">Cloud Computing</h3>
+                        <p class="interest-description">Building scalable, distributed systems and cloud-native applications</p>
+                    </div>
+                    <div class="interest-card">
+                        <span class="interest-icon">🌐</span>
+                        <h3 class="interest-title">Web Development</h3>
+                        <p class="interest-description">Creating responsive, user-friendly interfaces and full-stack applications</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="about-card">
+                <h2 class="section-title">🌟 Beyond the Code</h2>
+                <div class="section-content">
+                    <p>When I'm not coding, I stay active through various sports and outdoor activities. I'm passionate about <strong>hiking</strong>, <strong>basketball</strong>, <strong>football</strong>, and <strong>soccer</strong> - activities that keep me energized and help me think creatively about problem-solving.</p>
+                    <br>
+                    <p>I also love exploring new places and trying different cuisines with my girlfriend, which has taught me to appreciate diverse perspectives and experiences. Additionally, I'm passionate about <strong>video creation</strong>, particularly working with sports clips that I share on TikTok. This creative outlet allows me to express myself while developing skills in digital media and storytelling.</p>
+                </div>
+                
+                <div class="interests-grid">
+                    <div class="interest-card">
+                        <span class="interest-icon">🏃</span>
+                        <h3 class="interest-title">Sports & Fitness</h3>
+                        <p class="interest-description">Basketball, football, soccer, and hiking keep me active and focused</p>
+                    </div>
+                    <div class="interest-card">
+                        <span class="interest-icon">🍽️</span>
+                        <h3 class="interest-title">Culinary Adventures</h3>
+                        <p class="interest-description">Exploring new restaurants and cuisines with my girlfriend</p>
+                    </div>
+                    <div class="interest-card">
+                        <span class="interest-icon">🎬</span>
+                        <h3 class="interest-title">Video Creation</h3>
+                        <p class="interest-description">Creating and editing sports content for TikTok as creative expression</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Create animated background particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('design');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.duration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles when page loads
+        window.addEventListener('load', createParticles);
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all about sections
+        document.querySelectorAll('.about-section, .profile-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
