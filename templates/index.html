@@ -516,7 +516,7 @@
                     <li><a href="/" data-section="home"><span>01.</span> Home</a></li>
                     <li><a href="/about-me" data-section="about"><span>02.</span> About</a></li>
                     <li><a href="/projects" data-section="projects"><span>03.</span> Projects</a></li>
-                    <li><a class="resume-link" href="/static/images/Edgardo-Paz-Romero_Resume.pdf" target="_blank" rel="noopener">Resume</a></li>
+                    <li><a class="resume-link" href="/static/images/Edgardo_Paz_Romero_Resume.pdf" target="_blank" rel="noopener">Resume</a></li>
                 </ul>
             </nav>
         </div>
@@ -551,12 +551,12 @@
             'Python',
             'Flask',
             'Git',
-            'HTML/CSS',
-            'Akamai Cloud',
+            'Typer',
+            'API Integration',
             'Java',
             'Linux',
             'Docker',
-            'SQLite',
+            'Requests',
             'C',
         ];
 
@@ -601,11 +601,11 @@
 
         const featuredProjects = [
             {
-                title: 'Zom AI Trading Platform',
-                description: 'Worked together as part of team that built front-end components for a stock advisory trading platform.',
-                tech: ['React', 'Tailwind CSS', 'TSX', 'Vercel'],
+                title: 'Tickr CLI Tool',
+                description: 'Built a command-line stock lookup tool using Python, Typer, and a free market data API to fetch real-time price and company information.',
+                tech: ['Python', 'Typer', 'Requests', 'Free Market Data API'],
                 links: {
-                    live: 'https://zom-psi.vercel.app'
+                    github: 'https://github.com/edgardopaz/tickrtool'
                 }
             },
             {
@@ -617,11 +617,11 @@
                 }
             },
             {
-                title: 'AI Form Coach',
-                description: 'Hackathon-winning app that uses AI to provide real-time feedback on form and technique for various exercises.',
-                tech: ['React', 'TensorFlow.js', 'MediaPipe', 'HTML/CSS', 'JSX', 'Google Gemini API'],
+                title: 'Wiki Race Bot',
+                description: 'Developed a Python automation bot using BeautifulSoup and SBERT to solve WikiRace paths between Wikipedia pages.',
+                tech: ['Python', 'BeautifulSoup', 'SBERT', 'Requests'],
                 links: {
-                    live:'https://formwise.tech'
+                    github:'https://github.com/edgardopaz/wiki-race-bot'
                 }
             }
         ];
@@ -649,7 +649,7 @@
                             form-coaching application at a recent hackathon, my work centers on
                             using current technology to empower users. I build applications that matter.
                         </p>
-                    <a className="hero-cta" href="#projects">Check out my work →</a>
+                    <a className="hero-cta" href="/projects" data-section="projects">Check out my work →</a>
                 </section>
             );
         }
@@ -663,13 +663,13 @@
                             <p>
                                 Hey! I'm Edgardo and I have always been drawn to creating things that help people. I started
                                 coding during my freshman year at Temple and quickly fell in love with combining <span className="highlight">logical solutions, design 
-                                skills, and web development</span> to build tools with real impact.
+                                skills, and automation</span> to build tools with real impact.
                             </p>
                             <br />
                             <p>
                                 Lately, I've been focused on translating potential solutions into dependable
-                                applications, a skill demonstrated by my recent work building an AI form-coaching
-                                application at a hackathon. I thrive in collaborative environments with tight 
+                                applications, a skill demonstrated by my recent work in developing a script to automate WikiRaces and a CLI tool to 
+                                quickly retrieve real-time stock prices. I thrive in collaborative environments with tight 
                                 feedback loops on projects that ultimately empower underserved communities.
                             </p>
                             <br />
@@ -682,7 +682,7 @@
                         </div>
                         <div>
                             <div className="profile-frame">
-                                <img src="/static/images/IMG_3913.jpeg" alt="Edgardo Paz-Romero" />
+                                <img src="static/images/profile.jpg" alt="Edgardo Paz-Romero" />
                             </div>
                         </div>
                     </div>
@@ -933,7 +933,7 @@
             }, []);
 
             useEffect(() => {
-                const links = document.querySelectorAll('nav a[data-section]');
+                const links = document.querySelectorAll('a[data-section]');
                 const handleClick = (event) => {
                     event.preventDefault();
                     const sectionId = event.currentTarget.dataset.section;
