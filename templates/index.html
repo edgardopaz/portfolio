@@ -392,6 +392,7 @@
             color: var(--slate);
         }
 
+        .project-footer > a,
         .external-links a {
             color: var(--light-slate);
             margin-left: 0.8rem;
@@ -399,6 +400,11 @@
             text-decoration: none;
         }
 
+        .project-footer > a {
+            margin-left: 0;
+        }
+
+        .project-footer > a:hover,
         .external-links a:hover {
             color: var(--green);
         }
@@ -624,7 +630,8 @@
                 description: 'Wordle-like League of Legends game that allows you to pick a champion and challenge your friends to guess.',
                 tech: ['Node.js', 'SQLite', 'JavaScript','Express', 'HTML/CSS'],
                 links: {
-                    video: 'https://loldle.fly.dev'
+                    video: 'https://loldle.fly.dev',
+                    report: '/static/images/loldle-technical-report.pdf'
                 }
             },
             {
@@ -758,7 +765,11 @@
                                     ))}
                                 </div>
                                 <div className="project-footer">
-                                    <span>Featured Project</span>
+                                    {project.links.report ? (
+                                        <a href={project.links.report} target="_blank" rel="noopener noreferrer">Report ↗</a>
+                                    ) : (
+                                        <span>Featured Project</span>
+                                    )}
                                     <div className="external-links">
                                         {project.links.live && (
                                             <a href={project.links.live} target="_blank" rel="noopener noreferrer">Live ↗</a>
