@@ -197,6 +197,29 @@
             font-size: clamp(2rem, 6vw, 3.2rem);
             color: var(--light-slate);
             margin: 0.6rem 0 1.5rem;
+            min-height: 1.25em;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.08em;
+        }
+
+        .hero-subtitle-text {
+            white-space: nowrap;
+        }
+
+        .hero-subtitle-cursor {
+            color: var(--green);
+            animation: blink 1s steps(1, end) infinite;
+        }
+
+        @keyframes blink {
+            0%, 49% {
+                opacity: 1;
+            }
+
+            50%, 100% {
+                opacity: 0;
+            }
         }
 
         .hero-description {
@@ -555,15 +578,15 @@
 
         const skills = [
             'Python',
-            'Flask',
-            'SQLite',
-            'JavaScript',
-            'API Integration',
             'Java',
+            'JavaScript',
+            'C',
+            'Flask',
+            'RESTful APIs',
+            'AWS',
             'Linux',
             'Docker',
             'Node.js',
-            'C',
         ];
 
         const experiences = [
@@ -655,17 +678,60 @@
         }
 
         function HeroSection() {
+            const heroTitles = ['Software Engineer', 'Undergraduate Researcher'];
+            const [titleIndex, setTitleIndex] = useState(0);
+            const [displayText, setDisplayText] = useState('');
+            const [isDeleting, setIsDeleting] = useState(false);
+
+            useEffect(() => {
+                const currentTitle = heroTitles[titleIndex];
+                const isComplete = displayText === currentTitle;
+                const isCleared = displayText === '';
+
+                let timeoutDelay = isDeleting ? 70 : 110;
+
+                if (!isDeleting && isComplete) {
+                    timeoutDelay = 1400;
+                } else if (isDeleting && isCleared) {
+                    timeoutDelay = 250;
+                }
+
+                const timeoutId = window.setTimeout(() => {
+                    if (!isDeleting && isComplete) {
+                        setIsDeleting(true);
+                        return;
+                    }
+
+                    if (isDeleting && isCleared) {
+                        setIsDeleting(false);
+                        setTitleIndex((currentIndex) => (currentIndex + 1) % heroTitles.length);
+                        return;
+                    }
+
+                    setDisplayText((currentText) => (
+                        isDeleting
+                            ? currentText.slice(0, -1)
+                            : currentTitle.slice(0, currentText.length + 1)
+                    ));
+                }, timeoutDelay);
+
+                return () => window.clearTimeout(timeoutId);
+            }, [displayText, isDeleting, titleIndex]);
+
             return (
                 <section id="home" className="section-wrapper page-section" data-section-id="home">
                     <p className="hero-eyebrow">Hi, my name is</p>
                     <h1 className="hero-title">Edgardo Paz-Romero.</h1>
-                    <h2 className="hero-subtitle">I build things that make life easier.</h2>
+                    <h2 className="hero-subtitle" aria-label={heroTitles[titleIndex]}>
+                        <span className="hero-subtitle-text">{displayText}</span>
+                        <span className="hero-subtitle-cursor" aria-hidden="true">|</span>
+                    </h2>
                         <p className="hero-description">
                             I am a driven, first-generation Computer Science student at Temple 
-                            University dedicated to software that can change lives. From working on a 
-                            software team for a stock advice platform to successfully building an AI
-                            form-coaching application at a recent hackathon, my work centers on
-                            using current technology to empower users. I build applications that matter.
+                            University dedicated to building software that can change lives. From working on a 
+                            software team for a stock advice platform to successfully building an full-stack
+                            League of Legends game using the Wordle format, my work centers on
+                            using current technology to empower users and make their experiences enjoyable. 
                         </p>
                     <a className="hero-cta" href="/projects" data-section="projects">Check out my work →</a>
                 </section>
@@ -679,7 +745,7 @@
                     <div className="about-grid">
                         <div>
                             <p>
-                                Hey! I'm Edgardo and I have always been drawn to creating things that help people. I started
+                                Hey! I'm Edgardo and I have always been drawn to learning about how things work behind closed doors. I started
                                 coding during my freshman year at Temple and quickly fell in love with combining <span className="highlight">logical solutions, design 
                                 skills, and automation</span> to build tools with real impact.
                             </p>
@@ -687,8 +753,9 @@
                             <p>
                                 Lately, I've been focused on translating potential solutions into dependable
                                 applications, a skill demonstrated by my recent work in developing a script to automate WikiRaces and a CLI tool to 
-                                quickly retrieve real-time stock prices. I thrive in collaborative environments with tight 
-                                feedback loops on projects that ultimately empower underserved communities.
+                                quickly retrieve real-time stock prices. I recently finished work on a full-stack web application that allows users to play a
+                                League of Legends-themed Wordle game. I've also started researching low-level systems as I work on my current project where I 
+                                will be rebuilding Docker from scratch. 
                             </p>
                             <br />
                             <p>Here are a few technologies I've been working with recently:</p>
