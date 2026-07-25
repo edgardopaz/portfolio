@@ -9,10 +9,15 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 
+# Frontend dependencies and temporary build output
+node_modules/
+.build/
+
 # Virtual environments
 .venv/
 venv/
 ENV/
+portfolio_project/
 
 # Django
 *.log

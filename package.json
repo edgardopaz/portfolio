@@ -1,0 +1,20 @@
+{
+  "name": "edgardo-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "esbuild frontend/app.jsx --bundle --minify --outfile=static/dist/app.js --define:process.env.NODE_ENV=\\\"production\\\"",
+    "build:server": "esbuild frontend/prerender.jsx --bundle --platform=node --outfile=.build/prerender.cjs --define:process.env.NODE_ENV=\\\"production\\\" && node .build/prerender.cjs",
+    "test": "npm run build && python -m unittest discover -s tests",
+    "watch": "esbuild frontend/app.jsx --bundle --sourcemap --outfile=static/dist/app.js --define:process.env.NODE_ENV=\\\"development\\\" --watch"
+  },
+  "description": "Frontend build and prerendering for Edgardo Paz-Romero's portfolio.",
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.1"
+  }
+}

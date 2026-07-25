@@ -1,0 +1,16 @@
+.git
+.gitignore
+.venv
+venv
+ENV
+portfolio_project
+node_modules
+.build
+static/dist
+templates/_portfolio.html
+__pycache__
+*.py[cod]
+.pytest_cache
+.mypy_cache
+*.log
+.DS_Store
