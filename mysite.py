@@ -10,15 +10,15 @@ PAGE_METADATA = {
         "title": "Edgardo Paz-Romero | Software Engineer",
         "description": (
             "Portfolio of Edgardo Paz-Romero, a Computer Science student building "
-            "full-stack applications, containerized services, and developer tools."
+            "full-stack applications, backend services, and developer tools."
         ),
     },
     "about": {
         "path": "/about-me",
         "title": "About | Edgardo Paz-Romero",
         "description": (
-            "Learn about Edgardo Paz-Romero's full-stack and platform engineering "
-            "experience, HCI research, and approach to building useful software."
+            "Learn about Edgardo Paz-Romero's full-stack and backend engineering "
+            "experience, machine learning, and approach to building cool software."
         ),
     },
     "projects": {
@@ -26,7 +26,7 @@ PAGE_METADATA = {
         "title": "Projects | Edgardo Paz-Romero",
         "description": (
             "Explore software projects by Edgardo Paz-Romero, including Flashcard "
-            "Flask, a Go password manager, and the full-stack LoLdle game."
+            "Flask, a transfer market value predictor, and the full-stack LoLdle game."
         ),
     },
 }

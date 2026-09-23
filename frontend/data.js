@@ -27,13 +27,34 @@ export const experiences = [
     {
         id: 'nextgen',
         company: 'NextGen Federal Systems',
-        title: 'Software Engineer Intern',
+        title: 'Software Engineer Intern, Weather Modeling Platform',
         range: 'May 2026 — Present',
         description: [
-            'Containerize and test microservices with Docker and local Kubernetes clusters, simulating production environments for an ML platform.',
-            'Automate local test environments with Makefiles that build and push updated images to a local container registry.',
-            'Contribute to full-stack functionality with Python backend services and TypeScript frontend interfaces.',
-            'Participate in Agile workflows using Jira and GitLab while aligning with the technical lead during regular stand-ups.',
+            'Rewrote a Python dataset-removal microservice on Kubernetes to recursively delete directory trees, eliminating pod hangs when removing multi-gigabyte Zarr archives.',
+            'Train a pycontrails-based contrail prediction model using Zarr weather data on a high-performance computing cluster, integrating it with the MISTK testing harness and evaluating AWS S3 storage.',
+            'Participate in Agile biweekly stand-ups, manage task lifecycles in Jira, and maintain source code in GitLab.',
+        ],
+    },
+    {
+        id: 'spiideo',
+        company: 'Spiideo',
+        title: 'Technical Operations Agent',
+        range: 'Sept 2026 — Present',
+        description: [
+            'Monitor logs and incidents across hundreds of concurrent live video streams, surfacing system-level problems before they require escalation.',
+            'Triage stream outages through incident.io, using incident threads and log output to diagnose root causes and restore service.',
+            'Serve in an on-call rotation focused on observability, log analysis, and troubleshooting across the streaming pipeline.',
+        ],
+    },
+    {
+        id: 'owlhacks',
+        company: 'Owl Hacks',
+        title: 'Operations Team Member',
+        range: 'June 2026 — Sept 2026',
+        description: [
+            'Planned the weekend run of show for Temple University’s hackathon, building the event schedule and programming workshops and trivia.',
+            'Recruited guest speakers and coordinated prizes, participant gifts, and catering within event budgets and timelines.',
+            'Directed day-of operations, keeping sessions on schedule and resolving logistical issues across organizer teams.',
         ],
     },
     {
@@ -85,12 +106,12 @@ export const experiences = [
 
 export const featuredProjects = [
     {
-        title: 'Flashcard Flask',
+        title: 'Football Transfer Value Predictor',
         description:
-            'A full-stack learning platform for creating, managing, and studying custom flashcards, with an interactive JavaScript study flow and persistent SQLite-backed progress.',
-        tech: ['Python', 'JavaScript', 'Flask', 'SQLite'],
+            'An end-to-end machine-learning pipeline that combines Transfermarkt valuations with FBref statistics, matches player records across sources, and predicts football transfer values using a leakage-safe temporal split.',
+        tech: ['Python', 'pandas', 'scikit-learn', 'BeautifulSoup', 'Matplotlib'],
         links: {
-            github: 'https://github.com/edgardopaz/flashcard-flask',
+            github: 'https://github.com/edgardopaz/tm-scraper',
         },
     },
     {

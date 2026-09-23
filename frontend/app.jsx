@@ -83,10 +83,11 @@ function HeroSection() {
                 <span className="hero-subtitle-cursor" aria-hidden="true">|</span>
             </h2>
             <p className="hero-description">
-                I'm a first-generation Computer Science student at Temple University
-                building dependable full-stack and platform software. My recent work
-                spans containerized microservices for an ML platform, HCI research on
-                AI adoption, and practical tools built with Python, TypeScript, and Go.
+                I'm a first-generation Computer Science student at Temple University,
+                minoring in Management Information Systems. My experience includes software
+                engineering with Python and Kubernetes for a weather-modeling platform,
+                on-call technical operations supporting live video streams, and projects
+                in Go and machine learning.
             </p>
             <a className="hero-cta" href="/projects" data-section="projects">
                 Check out my work →
@@ -102,9 +103,10 @@ function AboutSection() {
             <div className="about-grid">
                 <div>
                     <p>
-                        Hey! I'm Edgardo, and I've always been drawn to understanding
-                        how systems work behind the scenes. I started coding during my
-                        first year at Temple and quickly became interested in combining{' '}
+                        Hey! I'm Edgardo, a first-generation Computer Science student at
+                        Temple University minoring in Management Information Systems. I'm
+                        drawn to understanding how systems work behind the scenes and
+                        combining{' '}
                         <span className="highlight">
                             software engineering, thoughtful design, and automation
                         </span>{' '}
@@ -112,12 +114,13 @@ function AboutSection() {
                     </p>
                     <br />
                     <p>
-                        Lately, I've been containerizing and testing microservices with
-                        Docker and Kubernetes for an ML platform while contributing to
-                        Python backend services and TypeScript interfaces. Outside of
-                        work, I'm researching how first-generation students adopt AI
-                        tools and building projects such as a Flask flashcard platform,
-                        a secure password manager in Go, and LoLdle.
+                        Currently, I work on a weather-modeling platform team, where I've built
+                        Python microservices on Kubernetes and trained a contrail prediction
+                        model using Zarr weather data. I also serve as an on-call Technical
+                        Operations Agent, monitoring live video streams and troubleshooting
+                        incidents through logs and system alerts. Outside of work, I build
+                        projects including a football transfer value predictor and a secure
+                        password manager in Go.
                     </p>
                     <br />
                     <p>Here are a few technologies I've been working with recently:</p>
