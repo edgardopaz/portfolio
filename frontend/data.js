@@ -1,13 +1,15 @@
 export const SECTION_ROUTE_MAP = {
     home: '/',
-    projects: '/projects',
     about: '/about-me',
+    experience: '/experience',
+    projects: '/projects',
 };
 
 export const ROUTE_SECTION_MAP = {
     '/': 'home',
-    '/projects': 'projects',
     '/about-me': 'about',
+    '/experience': 'experience',
+    '/projects': 'projects',
 };
 
 export const skills = [
@@ -61,7 +63,7 @@ export const experiences = [
         id: 'templehci',
         company: 'Temple HCI Lab',
         title: 'Undergraduate Researcher',
-        range: 'Nov 2025 — Present',
+        range: 'Nov 2025 — Aug 2026',
         description: [
             'Conduct comprehensive literature reviews through the ACM Digital Library and Google Scholar.',
             'Analyze AI adoption and usage patterns among first-generation students.',

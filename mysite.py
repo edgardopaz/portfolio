@@ -21,6 +21,14 @@ PAGE_METADATA = {
             "experience, machine learning, and approach to building cool software."
         ),
     },
+    "experience": {
+        "path": "/experience",
+        "title": "Experience | Edgardo Paz-Romero",
+        "description": (
+            "Explore Edgardo Paz-Romero's experience in software engineering, "
+            "technical operations, research, and event operations."
+        ),
+    },
     "projects": {
         "path": "/projects",
         "title": "Projects | Edgardo Paz-Romero",
@@ -103,6 +111,11 @@ def projects():
 @app.route("/about-me")
 def about_me():
     return render_portfolio("about", initial_section="about")
+
+
+@app.route("/experience")
+def experience():
+    return render_portfolio("experience", initial_section="experience")
 
 
 @app.route("/robots.txt")

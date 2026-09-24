@@ -99,7 +99,7 @@ function HeroSection() {
 function AboutSection() {
     return (
         <section id="about" className="section-wrapper page-section" data-section-id="about">
-            <h2 className="section-title"><span>01.</span> About Me</h2>
+            <h2 className="section-title"><span>02.</span> About Me</h2>
             <div className="about-grid">
                 <div>
                     <p>
@@ -179,8 +179,12 @@ function ExperienceSection() {
     };
 
     return (
-        <section id="experience" className="section-wrapper">
-            <h2 className="section-title"><span>02.</span> Where I've Worked</h2>
+        <section
+            id="experience"
+            className="section-wrapper page-section"
+            data-section-id="experience"
+        >
+            <h2 className="section-title"><span>03.</span> Where I've Worked</h2>
             <div className="experience-layout">
                 <div className="experience-tabs" role="tablist" aria-label="Work experience">
                     {experiences.map((experience, index) => (
@@ -223,7 +227,7 @@ function ExperienceSection() {
 function ProjectsSection() {
     return (
         <section id="projects" className="section-wrapper page-section" data-section-id="projects">
-            <h2 className="section-title"><span>03.</span> Some Things I've Built</h2>
+            <h2 className="section-title"><span>04.</span> Some Things I've Built</h2>
             <div className="projects-grid">
                 {featuredProjects.map((project) => (
                     <article key={project.title} className="project-card">
@@ -280,7 +284,7 @@ function ProjectsSection() {
 function ContactSection() {
     return (
         <section id="contact" className="contact-section">
-            <span className="hero-eyebrow">04. What's Next?</span>
+            <span className="hero-eyebrow">05. What's Next?</span>
             <h2>Get In Touch</h2>
             <p>
                 I'm currently looking for internship opportunities and collaborative

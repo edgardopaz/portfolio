@@ -27,8 +27,9 @@ class PortfolioAppTests(unittest.TestCase):
     def test_portfolio_routes_render_prerendered_content(self):
         expected_titles = {
             "/": "Edgardo Paz-Romero | Software Engineer",
-            "/projects": "Projects | Edgardo Paz-Romero",
             "/about-me": "About | Edgardo Paz-Romero",
+            "/experience": "Experience | Edgardo Paz-Romero",
+            "/projects": "Projects | Edgardo Paz-Romero",
         }
 
         for path, title in expected_titles.items():
@@ -73,7 +74,7 @@ class PortfolioAppTests(unittest.TestCase):
         self.assertEqual(sitemap.status_code, 200)
         self.assertEqual(sitemap.mimetype, "application/xml")
         sitemap_xml = sitemap.get_data(as_text=True)
-        for path in ("/", "/projects", "/about-me"):
+        for path in ("/", "/about-me", "/experience", "/projects"):
             self.assertIn(f"https://portfolio.example{path}", sitemap_xml)
 
 
