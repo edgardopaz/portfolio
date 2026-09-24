@@ -28,7 +28,7 @@ function updateActiveNav(section) {
 }
 
 function HeroSection() {
-    const heroTitles = ['Software Engineer', 'Undergraduate Researcher'];
+    const heroTitles = ['Software Engineer', 'Technical Operations Agent', 'Undergraduate Researcher'];
     const [titleIndex, setTitleIndex] = useState(0);
     const [displayText, setDisplayText] = useState(heroTitles[0]);
     const [isDeleting, setIsDeleting] = useState(false);
@@ -77,7 +77,7 @@ function HeroSection() {
             <h1 className="hero-title">Edgardo Paz-Romero.</h1>
             <h2
                 className="hero-subtitle"
-                aria-label="Software Engineer and Undergraduate Researcher"
+                aria-label="Software Engineer and Technical Operations Agent and Undergraduate Researcher"
             >
                 <span className="hero-subtitle-text">{displayText}</span>
                 <span className="hero-subtitle-cursor" aria-hidden="true">|</span>
